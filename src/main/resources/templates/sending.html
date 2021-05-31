@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title>Employee sender</title>
+</head>
+<body>
+    <h1>Input message</h1>
+    <form action="#" th:action="@{/sending}" th:object="${emailMess}" method="post" >
+        <table>
+            <tr>
+                <td>Subject:</td>
+                <td><input type="text" th:field="*{subject}"/></td>
+            </tr>
+            <tr>
+                <td>EmailTo:</td>
+                <td><input type="text" th:field="*{emailTo}"/></td>
+                <td th:if="${#fields.hasErrors('emailTo')}" th:errors="*{emailTo}">Email Error</td>
+            </tr>
+            <tr>
+                <td>Message:</td>
+                <td><input type="text" th:field="*{message}"/></td>
+            </tr>
+        </table>
+        <p><input type="submit" value="Send" /></p>
+    </form>
+    <p><a href="/index">Back to main page</a></p>
+</body>
+</html>

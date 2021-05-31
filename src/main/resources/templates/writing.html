@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title>Writing employee</title>
+</head>
+<body>
+    <h1>Write employee data to DB</h1>
+    <form action="#" th:action="@{/writing}" th:object="${employee}" method="post">
+        <table>
+            <tr>
+                <td>Surname:</td>
+                <td><input type="text" th:field="*{surname}"/></td>
+                <td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Middle name:</td>
+                <td><input type="text" th:field="*{middleName}"/></td>
+                <td th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Middle name Error</td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type="text" th:field="*{age}"/></td>
+                <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+            </tr>
+            <tr>
+                <td>Salary:</td>
+                <td><input type="text" th:field="*{salary}"/></td>
+                <td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Salary Error</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" th:field="*{email}"/></td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+            </tr>
+            <tr>
+                <td>Company:</td>
+                <td><input type="text" th:field="*{companyName}"/></td>
+            </tr>
+        </table>
+        <p><input type="submit" value="Write" /></p>
+    </form>
+    <div>
+        <table cellpadding="4" cellspacing="1">
+            <tr>
+                <th>ID</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Email</th>
+                <th>Company</th>
+
+            </tr>
+            <tr th:each="employ: ${emps}">
+                <td th:text="${employ.id}" />
+                <td th:text="${employ.surname}" />
+                <td th:text="${employ.name}" />
+                <td th:text="${employ.middleName}" />
+                <td th:text="${employ.age}" />
+                <td th:text="${employ.salary}" />
+                <td th:text="${employ.email}" />
+                <td th:text="${employ.companyName}" />
+
+            </tr>
+        </table>
+    </div>
+    <p><a href="/index">Back to main page</a></p>
+</body>
+</html>
